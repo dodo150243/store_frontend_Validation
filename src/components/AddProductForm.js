@@ -45,11 +45,9 @@ function AddProductForm() {
         const userId = "001";
         const timestamp = Math.floor(Date.now() / 1000);
         const newName = userId + "_" + timestamp;
-
         //uploading file
         const storageRef = ref(storage, `images/${newName}`);
         const uploadTask = uploadBytesResumable(storageRef, file);
-
         //get URL
         await uploadTask.on(
             "state_changed",
@@ -70,7 +68,6 @@ function AddProductForm() {
             }
         );
     };
-
     //formik เพื่อ validation form
     const formik = useFormik({
         initialValues: initProductState, //ค่าเริ่มต้น
@@ -103,9 +100,6 @@ function AddProductForm() {
             }
         },
     });
-
-
-
     const saveProduct = (url) => {
         //prepare parameter for add product
         const param = {
@@ -126,7 +120,6 @@ function AddProductForm() {
                 console.log(error);
             });
     };
-
     const newProduct = () => {
         // setProduct(initProductState);
         setSubmited(true);
